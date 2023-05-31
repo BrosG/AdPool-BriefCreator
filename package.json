@@ -1,0 +1,23 @@
+{
+  "name": "AdPool-BriefCreator",
+  "version": "1.0.0",
+  "description": "Description of your app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "microservice",
+    "app",
+    "integration"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    // Add your dependencies here
+    // For example:
+    "express": "^4.17.1",
+    "axios": "^0.21.1"
+  }
+}
