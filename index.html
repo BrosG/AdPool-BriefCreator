@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AdPool AI Brief Creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>AdPool AI Brief Creator</h1>
+
+    <form id="briefForm">
+        <label for="product">Product:</label><br>
+        <input type="text" id="product" name="product"><br>
+        <label for="targetAudience">Target Audience:</label><br>
+        <input type="text" id="targetAudience" name="targetAudience"><br>
+        <label for="advertisingChannel">Advertising Channel:</label><br>
+        <input type="text" id="advertisingChannel" name="advertisingChannel"><br>
+        <input type="submit" value="Create Brief">
+    </form>
+
+    <h2>Generated Brief:</h2>
+    <p id="brief"></p>
+
+    <script src="app.js"></script>
+</body>
+</html>
