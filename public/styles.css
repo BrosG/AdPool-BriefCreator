@@ -1,0 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#chat-form {
+    margin-bottom: 1em;
+}
+
+#response {
+    border: 1px solid #ddd;
+    padding: 1em;
+    margin-top: 1em;
+}
