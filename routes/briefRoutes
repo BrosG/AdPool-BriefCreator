@@ -1,0 +1,34 @@
+const express = require('express');
+const router = express.Router();
+
+// This is a placeholder for your actual brief creation function
+// Replace this with your real function that takes a product, target audience,
+// and advertising channel and returns a brief
+async function createBrief(product, targetAudience, advertisingChannel) {
+    // Generate a simple brief
+    const brief = `Advertising brief for ${product}: Target audience - ${targetAudience}, Advertising channel - ${advertisingChannel}`;
+
+    // Return the generated brief
+    return brief;
+}
+
+router.post('/createBrief', async (req, res, next) => {
+    const { product, targetAudience, advertisingChannel } = req.body;
+
+    // Ensure all necessary data is provided
+    if (!product || !targetAudience || !advertisingChannel) {
+        return res.status(400).json({ error: 'Missing necessary data for brief creation.' });
+    }
+
+    try {
+        const brief = await createBrief(product, targetAudience, advertisingChannel);
+
+        // Respond with the generated brief
+        res.json({ brief });
+    } catch (error) {
+        // Pass the error to the error handler
+        next(error);
+    }
+});
+
+module.exports = router;
