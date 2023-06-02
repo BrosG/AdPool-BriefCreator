@@ -1,26 +1,28 @@
-document.getElementById('briefForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
 
-    const product = document.getElementById('product').value;
-    const targetAudience = document.getElementById('targetAudience').value;
-    const advertisingChannel = document.getElementById('advertisingChannel').value;
+const app = express();
+const port = process.env.PORT || 3000;
 
-    fetch('/createBrief', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            product,
-            targetAudience,
-            advertisingChannel,
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('brief').textContent = data.brief;
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+app.use(express.static('public'));
+
+// Routes
+app.use('/createBrief', require('./routes/briefRoutes'));
+app.use('/chat', require('./routes/chatRoutes'));
+// Ajoutez d autres routes ici en utilisant app.use()
+
+// Gestionnaire derreurs
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Internal Server Error' });
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
 });
